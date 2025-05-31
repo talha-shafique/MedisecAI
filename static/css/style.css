@@ -1,0 +1,219 @@
+body {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            background-color: #000000;
+        }
+        h1, p.text-5xl {
+            font-weight: 500;
+        }
+        .gradient-text {
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Gradient border for the input */
+        .gradient-border-input {
+            position: relative;
+            border-radius: 9999px;
+        }
+        .gradient-border-input::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 9999px;
+            background: linear-gradient(to right, #2563EB, #172554);
+            z-index: -1;
+        }
+
+        #chat-container {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            scroll-behavior: smooth;
+            padding-top: 0;
+            padding-bottom: 8rem; /* Ensure space for the input bar at the bottom */
+            box-sizing: border-box; /* Include padding in element's total width and height */
+        }
+        #chat-container::-webkit-scrollbar {
+            display: none;
+        }
+        #chat-messages {
+            padding-top: 1rem;
+        }
+        .message-wrapper {
+            margin-bottom: 2rem; /* Space between user and AI messages */
+        }
+        /* Ensure the very last message doesn't have an extra margin if it's the last element,
+            but given padding-bottom on container, this might not be strictly necessary */
+        #chat-messages > .message-wrapper:last-child {
+            margin-bottom: 0;
+        }
+
+        /* User message styling */
+        .message-box-user {
+            background-color: #383838;
+            border-radius: 0.75rem;
+            font-size: 1.1rem;
+            padding: 1rem;
+            max-width: 70%;
+            color: #E3E3E3;
+            word-wrap: break-word; /* Ensure long words wrap */
+        }
+
+        /* Styles for AI response content - no specific message box background for AI */
+        .section-header {
+            font-weight: 600; /* Bolder */
+            font-size: 1.3rem; /* Slightly larger */
+            margin-top: 1.5rem; /* Space above each new section */
+            margin-bottom: 0.5rem; /* Space below header */
+            display: block; /* Ensure it takes full width for clear separation */
+            color: #ffffff; /* Keep section headers white */
+        }
+
+        .response-text {
+            font-size: 1.1rem;
+            color: #D1D5DB; /* Light gray for content */
+            margin-bottom: 0.25rem; /* Small space between paragraphs/list items */
+            word-wrap: break-word; /* Ensure long words wrap */
+        }
+
+        .response-list {
+            list-style-type: disc; /* Bullet points */
+            margin-left: 1.5rem; /* Indent lists */
+            padding-left: 0; /* No extra padding */
+            margin-top: 0.5rem; /* Space above list */
+            margin-bottom: 0.5rem; /* Space below list */
+        }
+        .response-list li {
+            margin-bottom: 0.25rem; /* Space between list items */
+        }
+        strong {
+            color: #ffffff; /* Make bolded terms stand out */
+        }
+
+        /* Styling for centered error messages within the chat */
+        .error-message-centered, .disclaimer-message-centered {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            
+            width: 100%; /* Take 100% of its parent (#chat-messages) */
+            padding-left: 1.5rem; /* Compensate for #chat-messages px-6 padding */
+            padding-right: 1.5rem; /* Compensate for #chat-messages px-6 padding */
+            box-sizing: border-box; /* Include padding in the element's total width */
+        }
+
+        .error-message-box, .disclaimer-message-box {
+            background-color: #000000;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-size: 0.9rem;
+            
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            flex-shrink: 1; /* Allow the box to shrink if necessary */
+            width: fit-content; /* Allow box to shrink-wrap to content */
+            max-width: 100%; /* Allow the box to take up 100% of its parent's *content area* */
+
+            /* Center the box horizontally within its parent (.disclaimer-message-centered) */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .error-message-box {
+            border: 1px solid #383838; /* Grey border for errors */
+        }
+        .disclaimer-message-box {
+            max-width: 100%;
+            border: 1px solid #383838; /* Blue border for disclaimers (tailwind blue-400) */
+        }
+
+        /* Styling for the text content within the disclaimer box */
+        .disclaimer-text-content {
+            flex-grow: 1; /* Allow the text content to grow within the flex container */
+            min-width: 0; /* Crucial for flex items with overflow: hidden */
+        }
+
+        /* NEW: Corrected AI message content styling for vertical flow */
+        .ai-message-content {
+            font-size: 1.1rem; /* Apply the base font size */
+            color: #D1D5DB; /* Apply the base text color */
+            padding: 1rem; /* Match padding of user message box */
+            border-radius: 0.75rem; /* Match border-radius of user message box */
+            max-width: 70%; /* Limit width like user message box */
+            word-wrap: break-word; /* Ensure long words wrap */
+            /* Removed display: flex and align-items: center here directly,
+               as this div will contain block elements that naturally stack.
+               The loader will be explicitly flexed inside itself. */
+            min-height: 2.5rem; /* Ensure minimum height for consistency */
+            /* If you want to keep it as flex container but make content stack: */
+            display: flex; /* Keep it flex for overall container management */
+            flex-direction: column; /* THIS IS THE KEY FIX: Stack items vertically */
+            justify-content: flex-start; /* Align content to the top */
+            align-items: flex-start; /* Align content to the left within the column */
+        }
+
+        /* NEW LOADER CSS */
+        .loader {
+            display: flex; /* Keep loader bars in a row */
+            align-items: center; /* Ensures bars are vertically centered */
+            gap: 2px; /* Small gap between bars */
+            height: 2.5rem; /* Ensure loader takes up consistent height */
+            /* Adjust margin for loader if needed to align it visually with avatar */
+            margin-left: 0; /* Remove any previous margin adjustments that might push it too far */
+        }
+
+        .bar {
+            display: inline-block;
+            width: 3px;
+            height: 20px;
+            background-color: rgba(255, 255, 255, .5);
+            border-radius: 10px;
+            animation: scale-up4 1s linear infinite;
+        }
+
+        .bar:nth-child(2) {
+            height: 35px;
+            margin: 0 5px; /* Adjust margin if needed, but flex gap might suffice */
+            animation-delay: .25s;
+        }
+
+        .bar:nth-child(3) {
+            animation-delay: .5s;
+        }
+
+        @keyframes scale-up4 {
+            20% {
+                background-color: #ffff;
+                transform: scaleY(1.5);
+            }
+
+            40% {
+                transform: scaleY(1);
+            }
+        }
+        .button {
+            background: linear-gradient(140.14deg, #193cb8 15.05%, #162456 114.99%)
+                padding-box,
+            linear-gradient(142.51deg, #193cb8 8.65%, #162456 88.82%) border-box;
+            border-radius: 7px;
+            border: 2px solid transparent;
+            text-shadow: 1px 1px 1px #00000040;
+            padding: 10px 40px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: white;
+            font-size: 18px;
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif; /* Added Poppins font for consistency */
+            outline: none; /* Removed default outline */
+        }
+
+        .button:hover {
+            box-shadow: none;
+            opacity: 80%;
+        }
