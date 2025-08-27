@@ -26,11 +26,21 @@ MedisecAI processes user queries through a sophisticated multi-agent system buil
 5.  **Response Generation:** The application captures and parses the entire conversation, formats it into a user-friendly HTML response, and sends it back to the frontend.
 6.  **Display Results:** The frontend dynamically displays the AI-generated consultation to the user with a typing effect.
 
+<div align="center">
+
 ## Technologies Used
 
-**Backend:** [Python](https://www.python.org/) | [Flask](https://flask.palletsprojects.com/) | [AutoGen](https://github.com/microsoft/autogen) | [Mistral AI](https://mistral.ai/)
+| Category | Technology |
+|---|---|
+| Backend | [Python](https://www.python.org/) |
+|         | [Flask](https://flask.palletsprojects.com/) |
+|         | [AutoGen](https://github.com/microsoft/autogen) |
+|         | [Mistral AI](https://mistral.ai/) |
+| Frontend| HTML |
+|         | [Tailwind CSS](https://tailwindcss.com/) |
+|         | JavaScript |
 
-**Frontend:** HTML | [Tailwind CSS](https://tailwindcss.com/) | JavaScript
+</div>
 
 ## Installation
 
