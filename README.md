@@ -112,5 +112,4 @@ Contributions are welcome! If you have any ideas, suggestions, or bug reports, p
 ## 📧 Contact
 
 - **Name:** Talha Shafique
-- **GitHub:** [https://github.com/talhashafique](https://github.com/talhashafique)
 - **Email:** talha.shafique126@gmail.com
